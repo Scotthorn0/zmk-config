@@ -33,7 +33,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        tdcapsl: tap_dance_caps_l: {
+        tdcapsl: tap_dance_caps_l {
             compatible = "zmk, behavior-tap-dance";
             label = "TAP_DANCE_CAPS_L";
             #binding-cells = <0>;
@@ -41,7 +41,7 @@
             bindings = <&kp LSHFT>, <&kp CAPS>;
         };
 
-        tdcapsr: tap_dance_caps_r: {
+        tdcapsr: tap_dance_caps_r {
             compatible = "zmk, behavior-tap-dance";
             label = "TAP_DANCE_CAPS_R";
             #binding-cells = <0>;
