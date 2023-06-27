@@ -34,7 +34,7 @@
         };
 
         tdcapsl: tap_dance_caps_l {
-            compatible = "zmk, behavior-tap-dance";
+            compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_CAPS_L";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -42,7 +42,7 @@
         };
 
         tdcapsr: tap_dance_caps_r {
-            compatible = "zmk, behavior-tap-dance";
+            compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_CAPS_R";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
