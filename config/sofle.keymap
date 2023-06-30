@@ -16,9 +16,15 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LALT &kp LGUI &kp C_EJECT>
-                , <&macro_release &kp LALT &kp LGUI &kp C_EJECT>
-                ;
+                = <&macro_tap &kp LALT &kp LGUI &kp C_EJECT>;
+        };
+
+        max_win_mac: max_win_mac {
+            label = "max_win_mac";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LCTRL &kp LALT &kp LGUI &kp EQUAL>;
         };
     };
 
@@ -98,11 +104,11 @@
 // |     | UNDO | CUT  | COPY  | PASTE  |        |      |  |      |      |      |       |      |       |       |
 //              |      |       |        |        |      |  |      |      |      |       |      |
             bindings = <
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4             &trans    &trans    &trans   &trans    &trans  &trans
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp C_VOL_DN   &kp C_VOL_UP             &kp PG_UP &kp HOME  &kp UP   &kp END   &trans  &trans
-&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &kp LGUI       &kp CLCK                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
-&trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE    &trans  &trans   &trans  &trans    &trans    &trans   &trans    &trans  &trans
-                        &trans       &trans       &trans         &trans  &trans   &trans  &trans    &trans    &trans   &trans
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4             &trans    &trans        &trans   &trans    &trans  &trans
+&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &kp C_VOL_DN   &kp C_VOL_UP             &kp PG_UP &kp HOME      &kp UP   &kp END   &trans  &trans
+&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &kp LGUI       &kp CLCK                 &kp PG_DN &kp LEFT      &kp DOWN &kp RIGHT &kp DEL &kp BSPC
+&trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE    &trans  &trans   &trans  &trans    &max_win_mac  &trans   &trans    &trans  &trans
+                        &trans       &trans       &trans         &trans  &trans   &trans  &trans    &trans        &trans   &trans
             >;
 
 //            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
