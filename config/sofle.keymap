@@ -16,7 +16,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LALT &kp LGUI &kp C_EJECT>;
+                = <&macro_press &kp LALT &kp LGUI &kp C_EJECT>
+                , <&macro_release &kp LALT &kp LGUI &kp C_EJECT>
+                ;
         };
 
         max_win_mac: max_win_mac {
@@ -24,7 +26,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LCTRL &kp LALT &kp LGUI &kp EQUAL>;
+                = <&macro_press &kp LCTRL &kp LALT &kp LGUI &kp EQUAL>
+                , <&macro_release &kp LCTRL &kp LALT &kp LGUI &kp EQUAL>
+                ;
         };
     };
 
