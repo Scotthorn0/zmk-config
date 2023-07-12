@@ -30,6 +30,18 @@
                 , <&macro_release &kp LCTRL &kp LALT &kp LGUI &kp EQUAL>
                 ;
         };
+
+        cp_path: cp_path {
+            label = "cp_path";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI &kp K>
+                , <&macro_release &kp LGUI &kp K>
+                , <&macro_press &kp LSHFT &kp LALT &kp LGUI &kp C>
+                , <&macro_release &kp LSHFT &kp LALT &kp LGUI &kp C>
+                ;
+        }
     };
 
     behaviors {
@@ -102,16 +114,16 @@
 
         raise_layer {
 // ------------------------------------------------------------------------------------------------------------
-// |     | BT1  | BT2  |  BT3  |  BT4   |  BT5   |                |      |        |       |      |       | BTCLR |
-// |     | INS  | PSCR | GUI   | VOL_DN | VOL_UP |                | PGUP | HOME   |   ^   | END  |       |       |
-// |     | ALT  | CTRL | SHIFT | GUI    |  CAPS  |                | PGDN |   <-   |   v   |  ->  |  DEL  | BKSPC |
-// |     | UNDO | CUT  | COPY  | PASTE  |        |      |  |      |      | MAXWIN |       |      |       |       |
-//              |      |       |        |        |      |  |      |      |        |       |      |
+// |     | BT1  | BT2  |  BT3  |  BT4   |  BT5   |                |      |        |        |      |       | BTCLR |
+// |     | INS  | PSCR | GUI   | VOL_DN | VOL_UP |                | PGUP | HOME   |   ^    | END  |       |       |
+// |     | ALT  | CTRL | SHIFT | GUI    |  CAPS  |                | PGDN |   <-   |   v    |  ->  |  DEL  | BKSPC |
+// |     | UNDO | CUT  | COPY  | PASTE  |        |      |  |      |      | MAXWIN | CPPATH |      |       |       |
+//              |      |       |        |        |      |  |      |      |        |        |      |
             bindings = <
 &trans   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4             &trans    &trans        &trans   &trans    &trans  &bt BT_CLR
 &trans   &kp INS      &kp PSCRN    &kp K_CMENU  &kp C_VOL_DN   &kp C_VOL_UP             &kp PG_UP &kp HOME      &kp UP   &kp END   &trans  &trans
 &trans   &kp LALT     &kp LCTRL    &kp LSHFT    &kp LGUI       &kp CLCK                 &kp PG_DN &kp LEFT      &kp DOWN &kp RIGHT &kp DEL &kp BSPC
-&trans   &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE    &trans  &trans   &trans  &trans    &max_win_mac  &trans   &trans    &trans  &trans
+&trans   &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE    &trans  &trans   &trans  &trans    &max_win_mac  &cp_path   &trans    &trans  &trans
                       &trans       &trans       &trans         &trans  &trans   &trans  &trans    &trans        &trans   &trans
             >;
 
