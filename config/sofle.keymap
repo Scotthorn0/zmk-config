@@ -41,7 +41,7 @@
                 , <&macro_press &kp LSHFT &kp LALT &kp LGUI &kp C>
                 , <&macro_release &kp LSHFT &kp LALT &kp LGUI &kp C>
                 ;
-        }
+        };
     };
 
     behaviors {
