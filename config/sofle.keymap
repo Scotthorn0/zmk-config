@@ -129,5 +129,23 @@
 
 //            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
+
+        gaming_layer {
+// ------------------------------------------------------------------------------------------------------------
+// |  `   |  1        |  2  |  3  |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |     -     |
+// |  T   |  ESC      |  Q  |  W  |  E   |  R   |                   |  Y   |  U    |  I    |  O   |   P   |   BKSPC   |
+// |  G   |  TAB      |  A  |  S  |  D   |  F   |                   |  H   | J CMD |  K    |  L   |   ;   |     '     |
+// |  B   | SHFT/CAPS |  Z  |  X  |  C   |  V   |  ENTER |  | ENTER |  N   |  M    |  ,    |  .   |   /   | SHFT/CAPS |
+//                   | GUI | ALT  | CTRL | LOWER|  SPACE |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
+            bindings = <
+   &kp GRAVE  &kp N1     &kp N2      &kp N3     &kp N4      &kp N5                              &kp N6    &kp N7     &kp N8     &kp N9      &kp N0      &kp MINUS
+   &kp T      &kp ESC    &kp Q       &kp W      &kp E       &kp R                               &kp Y     &kp U      &kp I      &kp O       &kp P       &kp BSPC
+   &kp G      &kp TAB    &kp A       &kp S      &kp D       &kp F                               &kp H     &hm RGUI J &kp K      &kp L       &kp SEMI    &kp SQT
+   &kp B      &tdcapsl   &kp Z       &kp X      &kp C       &kp V    &kp RET       &kp RET      &kp N     &kp M      &kp COMMA  &kp DOT     &kp FSLH    &tdcapsr
+                         &kp LGUI    &kp LALT   &kp LCTRL   &mo 1    &kp SPACE     &kp SPACE    &mo 2     &kp RCTRL  &kp RALT   &kp RGUI
+            >;
+
+            // sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
     };
 };
