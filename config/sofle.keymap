@@ -21,13 +21,35 @@
                 ;
         };
 
-        max_win_mac: max_win_mac {
-            label = "max_win_mac";
+        max_win: max_win {
+            label = "max_win";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_press &kp LCTRL &kp LALT &kp LGUI &kp EQUAL>
                 , <&macro_release &kp LCTRL &kp LALT &kp LGUI &kp EQUAL>
+                ;
+        };
+
+        zoom_in: zoom_in {
+            label = "zoom_in";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp KP_PLUS>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+       zoom_out: zoom_out {
+            label = "zoom_out";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp MINUS>
+                , <&macro_release &kp LCTRL>
                 ;
         };
 
@@ -114,17 +136,17 @@
 
         raise_layer {
 // ------------------------------------------------------------------------------------------------------------
-// |     | BT1  | BT2  |  BT3  |  BT4   |  BT5   |                |      |        |        |      |       | BTCLR |
-// |     | INS  | PSCR | GUI   | VOL_DN | VOL_UP |                | PGUP | HOME   |   ^    | END  |       |       |
-// |     | ALT  | CTRL | SHIFT | GUI    |  CAPS  |                | PGDN |   <-   |   v    |  ->  |  DEL  | BKSPC |
-// |     | UNDO | CUT  | COPY  | PASTE  |        |      |  |      |      | MAXWIN | CPPATH |      |       |       |
-//              |      |       |        |        |      |  |      |      |        |        |      |
+// |     | BT1  | BT2  |  BT3  |  BT4   |  BT5   |                |      | ZOOMIN | ZOOMOUT  |      |       | BTCLR |
+// |     | INS  | PSCR | GUI   | VOL_DN | VOL_UP |                | PGUP | HOME   |    ^     | END  |       |       |
+// |     | ALT  | CTRL | SHIFT | GUI    |  CAPS  |                | PGDN |   <-   |    v     |  ->  |  DEL  | BKSPC |
+// |     | UNDO | CUT  | COPY  | PASTE  |        |      |  |      |      | MAXWIN |  CPPATH  |      |       |       |
+//              |      |       |        |        |      |  |      |      |        |          |      |
             bindings = <
-&trans   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4             &trans    &trans        &trans   &trans    &trans  &bt BT_CLR
-&trans   &kp INS      &kp PSCRN    &kp K_CMENU  &kp C_VOL_DN   &kp C_VOL_UP             &kp PG_UP &kp HOME      &kp UP   &kp END   &trans  &trans
-&trans   &kp LALT     &kp LCTRL    &kp LSHFT    &kp LGUI       &kp CLCK                 &kp PG_DN &kp LEFT      &kp DOWN &kp RIGHT &kp DEL &kp BSPC
-&trans   &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE    &trans  &trans   &trans  &trans    &max_win_mac  &cp_path   &trans    &trans  &trans
-                      &trans       &trans       &trans         &trans  &trans   &trans  &trans    &trans        &trans   &trans
+&trans   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &bt BT_SEL 4             &trans    &zoom_in   &zoom_out  &trans    &trans  &bt BT_CLR
+&trans   &kp INS      &kp PSCRN    &kp K_CMENU  &kp C_VOL_DN   &kp C_VOL_UP             &kp PG_UP &kp HOME   &kp UP     &kp END   &trans  &trans
+&trans   &kp LALT     &kp LCTRL    &kp LSHFT    &kp LGUI       &kp CLCK                 &kp PG_DN &kp LEFT   &kp DOWN   &kp RIGHT &kp DEL &kp BSPC
+&trans   &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE    &trans  &trans   &trans  &trans    &max_win   &cp_path   &trans    &trans  &trans
+                      &trans       &trans       &trans         &trans  &trans   &trans  &trans    &trans     &trans     &trans
             >;
 
 //            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -132,17 +154,17 @@
 
         gaming_layer {
 // ------------------------------------------------------------------------------------------------------------
-// |  `  |  1      |  2  |  3  |  4  |  5   |                  |  6   |  7    |  8    |  9   |   0   |     -     |
-// |  T  |  ESC    |  Q  |  W  |  E  |  R   |                  |  Y   |  U    |  I    |  O   |   P   |   BKSPC   |
-// |  G  |  TAB    |  A  |  S  |  D  |  F   |                  |  H   | J CMD |  K    |  L   |   ;   |     '     |
-// |  B  |  SHFT   |  Z  |  X  |  C  |  V   |   G   |  | ENTER |  N   |  M    |  ,    |  .   |   /   | SHFT/CAPS |
-//                 | GUI | ALT |  T  | ENTER| SPACE |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
+// | ESC |  1      |   2   |  3  |  4   |   5   |                  |  6   |  7    |  8    |  9   |   0   |     -     |
+// | ALT |  ESC    |   Q   |  W  |  E   |   R   |                  |  Y   |  U    |  I    |  O   |   P   |   BKSPC   |
+// | TAB |  LCTRL  |   A   |  S  |  D   |   F   |                  |  H   | J CMD |  K    |  L   |   ;   |     '     |
+// |  B  |  SHFT   |   Z   |  X  |  C   |   V   |   G   |  | ENTER |  N   |  M    |  ,    |  .   |   /   | SHFT/CAPS |
+//                 | DFALT | ALT |  I   | SPACE | ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
             bindings = <
-   &kp GRAVE  &kp N1     &kp N2    &kp N3     &kp N4    &kp N5                              &kp N6    &kp N7     &kp N8     &kp N9      &kp N0      &kp MINUS
-   &kp T      &kp ESC    &kp Q     &kp W      &kp E     &kp R                               &kp Y     &kp U      &kp I      &kp O       &kp P       &kp BSPC
-   &kp G      &kp LCTRL  &kp A     &kp S      &kp D     &kp F                               &kp H     &hm RGUI J &kp K      &kp L       &kp SEMI    &kp SQT
-   &kp B      &kp LSHFT  &kp Z     &kp X      &kp C     &kp V    &kp G         &kp RET      &kp N     &kp M      &kp COMMA  &kp DOT     &kp FSLH    &tdcapsr
-                         &to 0     &kp LALT   &kp T     &mo RET  &kp SPACE     &kp SPACE    &mo 2     &kp RCTRL  &kp RALT   &kp RGUI
+   &kp ESC  &kp N1     &kp N2    &kp N3   &kp N4    &kp N5                              &kp N6    &kp N7     &kp N8     &kp N9      &kp N0      &kp MINUS
+   &kp LALT &kp ESC    &kp Q     &kp W    &kp E     &kp R                               &kp Y     &kp U      &kp I      &kp O       &kp P       &kp BSPC
+   &kp TAB  &kp LCTRL  &kp A     &kp S    &kp D     &kp F                               &kp H     &hm RGUI J &kp K      &kp L       &kp SEMI    &kp SQT
+   &kp B    &kp LSHFT  &kp Z     &kp X    &kp C     &kp V      &kp G       &kp RET      &kp N     &kp M      &kp COMMA  &kp DOT     &kp FSLH    &tdcapsr
+                       &to 0     &kp M    &kp I     &mo SPACE  &kp RET     &kp SPACE    &mo 2     &kp RCTRL  &kp RALT   &kp RGUI
             >;
         };
     };
